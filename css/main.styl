@@ -25,10 +25,13 @@ body
 		line-height 19px
 
 	a
+	article
 		font-family Georgia
 		font-size 16px
-		color $orange
 		line-height 24px
+
+	a
+		color $orange
 		text-decoration none
 				
 	header
@@ -42,149 +45,231 @@ body
 
 		img
 			margin-left 25%
+			margin-bottom 30px
 			width 50%
 			border-radius 100%
 
-		div
-			font-family Georgia
-			font-size 16px
+		article
 			color #FFFFFF
-			line-height 24px
 			text-align center
-			width 75%
-			margin auto
 
-.main-content
-	padding 30px 16px
-	.expectations
-		margin-bottom 80px
+	.main-content
+		padding 30px 16px
+		.expectations
+			margin-bottom 80px
 
-		h2
-			text-align left
-			margin-top 0
-			margin-bottom 29
-
-		.carousel__slide
-			background-color $cyan
-			padding 24px
-			height calc(100% - 78px)
-			width calc(100% - 48px)
-			
-			div
-				font-family Georgia
+			h2
 				text-align left
-				font-size 16px
-				line-height 24px
-	
-	.portfolio
-		h1
-		h2
-			text-align left
-		h1
-			margin-bottom 38px
-		&__example
-			&__description
+				margin-top 0
+				margin-bottom 29
+
+			.carousel-container
+				display none
+				.carousel__slide
+					height calc(100% - 78px)
+					width calc(100% - 48px)
+					background-color $cyan
+					padding 24px
+
+			.cards-conteiner
+				display flex
+				flex-wrap wrap
+				&__card
+					width calc(60% - 84px)
+					margin 10px
+					padding  32px
+					background-color $cyan
+				&__card:nth-of-type(even)
+					width calc(40% - 84px)
+				&__card:nth-of-type(3)
+					order 1
+
+				article
+					text-align left
+		
+		.portfolio
+			display flex
+			flex-wrap wrap
+
+			h1
+			h2
+				text-align left
+			h1
+				width 100%
+				margin-bottom 38px
+			h2
+				a
+					margin-top 8px
+					display block
+					font-weight normal
+			article
 				margin-top 16px
+			&__example
+				.carousel-container
+					.carousel
+						&__slide 
+							img
+								height 100%
+								width 100%
+
+	footer
+		display flex
+		flex-wrap wrap
+		background-color $cyan
+		padding 30px 16px
+
+		h1
+			width 100%
+			order 1
+			text-align left
+
+		ul
+			margin-top 0
+			order 2		
+			li
+				list-style-type none
+				position relative
+				margin 10px
+				&:before 
+					content ''
+					display inline-block
+					position absolute
+					left -35px
+					height 20px
+					width 20px
+					opacity 0.1
+					background #000000
+					border-radius 2px
+
+		article
+			order 3
+			
+		form
+			order 4
+			padding-bottom 20px
+			input
+			textarea
+			button
 				font-family Georgia
 				font-size 16px
-				color #000000
 				line-height 24px
-			.carousel
-				max-height 246px
-				&__slide 
-					img
-						height 100%
-						width 100%
+				width calc(100% - 22px)
+				border-radius 4px
+				padding 11px
+				border 1px solid rgba(0, 0, 0, .1)
+				margin 10px 0px
+				outline none
 
-footer
-	display flex
-	flex-direction column
-	background-color $cyan
-	padding 30px 16px
+			textarea
+				resize: none
+				
 
-	h1
-		text-align left
+			button
+			.file-container
+				font-family Helvetica
+				font-weight bold
 
-	ul
-		li
-			list-style-type none
-			position relative
-			margin 10px
-			&:before 
-				content ''
+			button
+				background-color $orange
+				color white
+				width 100%
+
+			.file-container
 				display inline-block
-				position absolute
-				left -35px
-				height 20px
-				width 20px
-				opacity 0.1
-				background #000000
-				border-radius 2px
+				line-height 24px
+				cursor pointer
+				color $orange
+				margin-bottom 30px
 
-	div
-		font-family Georgia
-		font-size 16px
-		line-height 24px
+				span
+					margin-right 10px
+					font-size 21px
 
-	form
-		padding-bottom 20px
-		input
-		textarea
-		button
-			font-family Georgia
-			font-size 16px
-			line-height 24px
-			width calc(100% - 22px)
-			border-radius 4px
-			padding 11px
-			border 1px solid rgba(0, 0, 0, .1)
-			margin 10px 0px
-			outline none
+				[type=file]
+					display none
 			
-
-		button
-		.file-container
-			font-family Helvetica
-			font-weight bold
-
-		button
-			background-color $orange
-			color white
-			width 100%
-
-		.file-container
-			display inline-block
-			line-height 24px
-			cursor pointer
-			color $orange
-			margin-bottom 30px
-
-			span
-				margin-right 10px
-				font-size 21px
-
-			[type=file]
-				display none
-			
-
-
-@media (min-width: 368px) and (max-width: 400px) {
-	  .main-content {
-			.portfolio {
-				&__example {
-					.carousel {
-						max-height: 50%;    
-					}
+@media (max-width: 784px) {
+	.main-container{
+		.main-content {
+			.expectations{
+				.cards-conteiner {
+					display none
+				}
+				.carousel-container {
+					display inline-block
+				}
+				.carousel-container:before { // 16:9
+					padding-top: calc(100% + 30px);
 				}
 			}
 		}
+	}
 }
-		
 
+@media (min-width: 785px) and (max-width: 1024px) {
+	.main-container{
 
-					
+		h1 {
+			font-size 40px
+		}
+		h2 {
+			font-size 24px
+		}
+		article {
+			line-height 28px
+			font-size 20px
+		} 
+		.main-content, footer {
+			padding 30px 32px
+		}
+	  header {
+			img {
+				margin-bottom 75px
+			}
+			article {
+				width 75%
+				margin auto
+			}
+		}
+		.main-content {
+			.expectations {
+				h1 {
+					text-align left
+				}
+				.carousel-container {
+					display none
+				}
+			}
+			.portfolio{
+				.carousel-container:before { // 16:9
+					padding-top: calc(70.5% + 30px);
+				}
+			}
+			.portfolio {
+				h2, article {
+					display inline-block
+				}
 
+				article {
+					width 50%
+					float right
+					margin-bottom 20px
+				}
+			}
+		}
 
-
-
+		footer {
+			ul {
+				order 3
+				flex 1
+				margin-top -10px;
+			}
+			article {
+				order 2
+				flex 2
+				padding-right 150px
+			}
+		}
+	}
+}
 

@@ -1,8 +1,8 @@
 $noOfSlides            = 5
-$carouselHeight        = 414px
 $carouselWidth         = 100%
 $carouselIndicatorSize = 8px
 $slideTransition       = .5s
+$carouselControlSize   = 30px
 
 @keyframes carousel-show-slide
   from
@@ -14,14 +14,18 @@ $slideTransition       = .5s
   * Control & indicator mixin
 */
 .carousel
-  height     $carouselHeight
   width      $carouselWidth
   overflow   hidden
   text-align center
-  position   relative
   padding    0
   list-style none
-
+  position:  absolute
+  top 0
+  left 0
+  bottom 0
+  right 0
+  
+  &__controls
   &__activator
     display none
 
@@ -38,10 +42,24 @@ $slideTransition       = .5s
           top 0
           left 0
           right 0
+        &:checked ~ .carousel__controls:nth-of-type({num})
+          display block
         &:checked ~ .carousel__indicators .carousel__indicator:nth-of-type({num})
           opacity 1
           background-color     black
         
+   &__control
+    height       calc(100% - 30px)
+    width        50%
+    position     absolute
+    cursor       pointer
+    z-index      3
+
+    &--backward
+      left      0px
+
+    &--forward
+      right     0px
 
   /**
     * Element for holding slide indicators
@@ -103,6 +121,12 @@ $slideTransition       = .5s
   display  inline-block
   position relative
   width 100%
+
+.carousel-container:before{
+	content: "";
+	display: block;
+	padding-top: 100%; 	/* initial ratio of 1:1*/
+}
 
 .carousel__slide
   overflow      hidden

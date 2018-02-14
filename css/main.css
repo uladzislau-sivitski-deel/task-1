@@ -23,11 +23,14 @@ body {
   font-size: 16px;
   line-height: 19px;
 }
-.main-container a {
+.main-container a,
+.main-container article {
   font-family: Georgia;
   font-size: 16px;
-  color: #dd3e18;
   line-height: 24px;
+}
+.main-container a {
+  color: #dd3e18;
   text-decoration: none;
 }
 .main-container header {
@@ -41,77 +44,98 @@ body {
 }
 .main-container header img {
   margin-left: 25%;
+  margin-bottom: 30px;
   width: 50%;
   border-radius: 100%;
 }
-.main-container header div {
-  font-family: Georgia;
-  font-size: 16px;
+.main-container header article {
   color: #fff;
-  line-height: 24px;
   text-align: center;
-  width: 75%;
-  margin: auto;
 }
-.main-content {
+.main-container .main-content {
   padding: 30px 16px;
 }
-.main-content .expectations {
+.main-container .main-content .expectations {
   margin-bottom: 80px;
 }
-.main-content .expectations h2 {
+.main-container .main-content .expectations h2 {
   text-align: left;
   margin-top: 0;
   margin-bottom: 29;
 }
-.main-content .expectations .carousel__slide {
-  background-color: #e6f0f0;
-  padding: 24px;
+.main-container .main-content .expectations .carousel-container {
+  display: none;
+}
+.main-container .main-content .expectations .carousel-container .carousel__slide {
   height: calc(100% - 78px);
   width: calc(100% - 48px);
+  background-color: #e6f0f0;
+  padding: 24px;
 }
-.main-content .expectations .carousel__slide div {
-  font-family: Georgia;
+.main-container .main-content .expectations .cards-conteiner {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-container .main-content .expectations .cards-conteiner__card {
+  width: calc(60% - 84px);
+  margin: 10px;
+  padding: 32px;
+  background-color: #e6f0f0;
+}
+.main-container .main-content .expectations .cards-conteiner__card:nth-of-type(even) {
+  width: calc(40% - 84px);
+}
+.main-container .main-content .expectations .cards-conteiner__card:nth-of-type(3) {
+  order: 1;
+}
+.main-container .main-content .expectations .cards-conteiner article {
   text-align: left;
-  font-size: 16px;
-  line-height: 24px;
 }
-.main-content .portfolio h1,
-.main-content .portfolio h2 {
+.main-container .main-content .portfolio {
+  display: flex;
+  flex-wrap: wrap;
+}
+.main-container .main-content .portfolio h1,
+.main-container .main-content .portfolio h2 {
   text-align: left;
 }
-.main-content .portfolio h1 {
+.main-container .main-content .portfolio h1 {
+  width: 100%;
   margin-bottom: 38px;
 }
-.main-content .portfolio__example__description {
+.main-container .main-content .portfolio h2 a {
+  margin-top: 8px;
+  display: block;
+  font-weight: normal;
+}
+.main-container .main-content .portfolio article {
   margin-top: 16px;
-  font-family: Georgia;
-  font-size: 16px;
-  color: #000;
-  line-height: 24px;
 }
-.main-content .portfolio__example .carousel {
-  max-height: 246px;
-}
-.main-content .portfolio__example .carousel__slide img {
+.main-container .main-content .portfolio__example .carousel-container .carousel__slide img {
   height: 100%;
   width: 100%;
 }
-footer {
+.main-container footer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   background-color: #e6f0f0;
   padding: 30px 16px;
 }
-footer h1 {
+.main-container footer h1 {
+  width: 100%;
+  order: 1;
   text-align: left;
 }
-footer ul li {
+.main-container footer ul {
+  margin-top: 0;
+  order: 2;
+}
+.main-container footer ul li {
   list-style-type: none;
   position: relative;
   margin: 10px;
 }
-footer ul li:before {
+.main-container footer ul li:before {
   content: '';
   display: inline-block;
   position: absolute;
@@ -122,17 +146,16 @@ footer ul li:before {
   background: #000;
   border-radius: 2px;
 }
-footer div {
-  font-family: Georgia;
-  font-size: 16px;
-  line-height: 24px;
+.main-container footer article {
+  order: 3;
 }
-footer form {
+.main-container footer form {
+  order: 4;
   padding-bottom: 20px;
 }
-footer form input,
-footer form textarea,
-footer form button {
+.main-container footer form input,
+.main-container footer form textarea,
+.main-container footer form button {
   font-family: Georgia;
   font-size: 16px;
   line-height: 24px;
@@ -143,32 +166,92 @@ footer form button {
   margin: 10px 0px;
   outline: none;
 }
-footer form button,
-footer form .file-container {
+.main-container footer form textarea {
+  resize: none;
+}
+.main-container footer form button,
+.main-container footer form .file-container {
   font-family: Helvetica;
   font-weight: bold;
 }
-footer form button {
+.main-container footer form button {
   background-color: #dd3e18;
   color: #fff;
   width: 100%;
 }
-footer form .file-container {
+.main-container footer form .file-container {
   display: inline-block;
   line-height: 24px;
   cursor: pointer;
   color: #dd3e18;
   margin-bottom: 30px;
 }
-footer form .file-container span {
+.main-container footer form .file-container span {
   margin-right: 10px;
   font-size: 21px;
 }
-footer form .file-container [type=file] {
+.main-container footer form .file-container [type=file] {
   display: none;
 }
-@media (min-width: 368px) and (max-width: 400px) {
-  .main-content .portfolio__example .carousel {
-    max-height: 50%;
+@media (max-width: 784px) {
+  .main-container .main-content .expectations .cards-conteiner {
+    display: none;
+  }
+  .main-container .main-content .expectations .carousel-container {
+    display: inline-block;
+  }
+  .main-container .main-content .expectations .carousel-container:before {
+    padding-top: calc(100% + 30px);
+  }
+}
+@media (min-width: 785px) and (max-width: 1024px) {
+  .main-container h1 {
+    font-size: 40px;
+  }
+  .main-container h2 {
+    font-size: 24px;
+  }
+  .main-container article {
+    line-height: 28px;
+    font-size: 20px;
+  }
+  .main-container .main-content,
+  .main-container footer {
+    padding: 30px 32px;
+  }
+  .main-container header img {
+    margin-bottom: 75px;
+  }
+  .main-container header article {
+    width: 75%;
+    margin: auto;
+  }
+  .main-container .main-content .expectations h1 {
+    text-align: left;
+  }
+  .main-container .main-content .expectations .carousel-container {
+    display: none;
+  }
+  .main-container .main-content .portfolio .carousel-container:before {
+    padding-top: calc(70.5% + 30px);
+  }
+  .main-container .main-content .portfolio h2,
+  .main-container .main-content .portfolio article {
+    display: inline-block;
+  }
+  .main-container .main-content .portfolio article {
+    width: 50%;
+    float: right;
+    margin-bottom: 20px;
+  }
+  .main-container footer ul {
+    order: 3;
+    flex: 1;
+    margin-top: -10px;
+  }
+  .main-container footer article {
+    order: 2;
+    flex: 2;
+    padding-right: 150px;
   }
 }

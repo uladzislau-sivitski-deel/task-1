@@ -16,9 +16,9 @@
       <h3>Фронт-енд-разработчик</h2>
       <h1>Сивицкий Владислав</h1>
       <img src="img/photo.png" alt="">
-      <div>
+      <article>
           Рекламный макет подсознательно экономит JavaScript. Несмотря на сложности, ребрендинг Sass, LESS, PostCSS. Медиавес, конечно, стабилизирует экспериментальный традиционный Gulp, Webpack. Построение бренда специфицирует Python жизненный цикл продукции. К тому же каждая сфера рынка выражена наиболее полно. Медиабизнес искажает комплексный системный анализ.
-      </div>
+      </article>
     </header>
     <main class="main-content">
       <div class="expectations">
@@ -31,38 +31,54 @@
               <input class="carousel__activator" type="radio" name="carousel-1" id="exp2"/>
               <input class="carousel__activator" type="radio" name="carousel-1" id="exp3"/>
               <input class="carousel__activator" type="radio" name="carousel-1" id="exp4"/>
+              <div class="carousel__controls">
+                  <label class="carousel__control carousel__control--backward" for="exp4"></label>
+                  <label class="carousel__control carousel__control--forward" for="exp2"></label>
+              </div>
+              <div class="carousel__controls">
+                <label class="carousel__control carousel__control--backward" for="exp1"></label>
+                <label class="carousel__control carousel__control--forward" for="exp3"></label>
+              </div>
+              <div class="carousel__controls">
+                <label class="carousel__control carousel__control--backward" for="exp2"></label>
+                <label class="carousel__control carousel__control--forward" for="exp4"></label>
+              </div>
+              <div class="carousel__controls">
+                <label class="carousel__control carousel__control--backward" for="exp3"></label>
+                <label class="carousel__control carousel__control--forward" for="exp1"></label>
+              </div>
               <div class="carousel__track">
                 <div class="carousel__slide">
                   <h2>
                     Cвобода
                   </h2>
-                  <div>
+                  <article>
                     Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
-                  </div>
+                  </article>
                 </div>
                 <div class="carousel__slide">
                     <h2>
                       Равенство
                     </h2>
-                    <div>
+                    <article>
                       Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
-                    </div>
+                    </article>
                 </div>
                 <div class="carousel__slide">
                     <h2>
                       Братство
                     </h2>
-                    <div>
+                    <article>
                       Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
-                    </div>
+                    </article>
                 </div>
                 <div class="carousel__slide">
                     <h2>
                       Трудоустройство
                     </h2>
-                    <div>
+                    <article>
                       Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
-                    </div>
+                    </article>
                 </div>
               </div>
               <div class="carousel__indicators">
@@ -73,24 +89,77 @@
               </div>
             </div>
           </div>
-      </div>
+          <div class="cards-conteiner">
+              <div class="cards-conteiner__card">
+                  <h2>
+                    Cвобода
+                  </h2>
+                  <article>
+                    Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
+                  </article>
+                </div>
+                <div class="cards-conteiner__card">
+                    <h2>
+                      Равенство
+                    </h2>
+                    <article>
+                      Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
+                    </article>
+                </div>
+                <div class="cards-conteiner__card">
+                    <h2>
+                      Трудоустройство
+                    </h2>
+                    <article>
+                      Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
+                    </article>
+                </div>
+                <div class="cards-conteiner__card">
+                    <h2>
+                      Братство
+                    </h2>
+                    <article>
+                      Разработка медиаплана, анализируя результаты рекламной кампании, нейтрализует эмпирический портрет потребителя.
+                    </article>
+                </div>
+          </div>
+        </div>
       <div class="portfolio">
         <h1>Мои работы</h1>
         <div class="portfolio__example">
-          <h2>Моды и шляпы</h2>
-          <a href="">lamoda.ru</a>
-          <div class="portfolio__example__description">
+          <h2>
+            Моды и шляпы
+            <a href="">lamoda.ru</a>
+          </h2>
+          <article class="portfolio__example__description">
             Межзвездная матеpия на следующий год,
             когда было лунное затмение и сгорел древний
             храм Афины в Афинах (при эфоре Питии и афинском архонте Каллии),
             многопланово перечеркивает ионный хвост.
-          </div>
+          </article>
           <div class="carousel-container">
               <div class="carousel my-carousel carousel--translate">
                 <input class="carousel__activator" type="radio" name="carousel-2" id="portex11" checked="checked"/>
                 <input class="carousel__activator" type="radio" name="carousel-2" id="portex12"/>
                 <input class="carousel__activator" type="radio" name="carousel-2" id="portex13"/>
                 <input class="carousel__activator" type="radio" name="carousel-2" id="portex14"/>
+                <div class="carousel__controls">
+                    <label class="carousel__control carousel__control--backward" for="portex14"></label>
+                    <label class="carousel__control carousel__control--forward" for="portex12"></label>
+                </div>
+                <div class="carousel__controls">
+                  <label class="carousel__control carousel__control--backward" for="portex11"></label>
+                  <label class="carousel__control carousel__control--forward" for="portex13"></label>
+                </div>
+                <div class="carousel__controls">
+                  <label class="carousel__control carousel__control--backward" for="portex12"></label>
+                  <label class="carousel__control carousel__control--forward" for="portex14"></label>
+                </div>
+                <div class="carousel__controls">
+                  <label class="carousel__control carousel__control--backward" for="portex13"></label>
+                  <label class="carousel__control carousel__control--forward" for="portex11"></label>
+                </div>
+
                 <div class="carousel__track">
                   <div class="carousel__slide">
                     <img src="img/photo.png" alt="">
@@ -104,7 +173,6 @@
                   <div class="carousel__slide">
                     <img src="" alt="">
                   </div>                  
-                  
                 </div>
                 <div class="carousel__indicators">
                   <label class="carousel__indicator" for="portex11"></label>
@@ -125,9 +193,9 @@
         <li><a href="">GitHub</a></li>
         <li><a href="">Twitter</a></li>
       </ul>
-      <div>
+      <article>
           Я открыт для новых проектов. Вы можете прислать мне для оценки примерное техническое задание или просто описание проекта своими словами.
-      </div>
+      </article>
       <form>
         <input type="text" name="mailName" id="mailName" placeholder="Имя">
         <input type="email" name="mailEmail" id="mailEmail" placeholder="Почтовый ящик">
