@@ -114,14 +114,14 @@ body
 				.carousel-container
 					.carousel
 						for num in 1..5
-							@media (min-width: 785px)
+							@media (min-width: 1040px)
 								&__activator:nth-of-type({num})
 									&:checked ~ .carousel__track
 										transform translateY(-((num - 1) * 100%))
 					.carousel
 						&__slide
 							for num in (1..5)
-								@media (min-width: 785px)
+								@media (min-width: 1040px)
 									&:nth-of-type({num})
 										transform translateY((num - 1) * 100%)
 							img
@@ -129,10 +129,12 @@ body
 								width 100%
 
 	footer
-		display flex
-		flex-wrap wrap
 		background-color $cyan
 		padding 30px 16px
+
+		.footer-container 
+			display flex
+			flex-wrap wrap
 
 		h1
 			width 100%
@@ -322,6 +324,7 @@ body
 			
 			.portfolio{
 				&__example{
+					margin-bottom: 130px;
 					&:nth-of-type(even) {
 						transform: scaleX(-1);
 						h2, article, img {
@@ -332,7 +335,7 @@ body
 					padding-left 650px
 					h2 {
 						display block
-						margin-bottom 180px
+						margin-bottom 130px
 					}
 					article {
 						font-size 16px
@@ -390,7 +393,16 @@ body
 				padding-left 25px
 				width 100%
 				display block
+				&:before {
+					content 'Ссылки на мои соцсети:'
+					position relative
+					left -25px
+					font-family Georgia
+					font-size 16px
+					line-height 24px
+				}
 			}
+
 
 			article {
 				flex none
