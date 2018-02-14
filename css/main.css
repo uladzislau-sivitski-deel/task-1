@@ -24,7 +24,10 @@ body {
   line-height: 19px;
 }
 .main-container a,
-.main-container article {
+.main-container article,
+.main-container button,
+.main-container input,
+.main-container textarea {
   font-family: Georgia;
   font-size: 16px;
   line-height: 24px;
@@ -34,6 +37,8 @@ body {
   text-decoration: none;
 }
 .main-container header {
+  display: flex;
+  flex-direction: column;
   padding: 30px 16px;
   background-color: #082841;
 }
@@ -111,6 +116,56 @@ body {
 .main-container .main-content .portfolio article {
   margin-top: 16px;
 }
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__activator:nth-of-type(1):checked ~ .carousel__track {
+    transform: translateY(0%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__activator:nth-of-type(2):checked ~ .carousel__track {
+    transform: translateY(-100%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__activator:nth-of-type(3):checked ~ .carousel__track {
+    transform: translateY(-200%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__activator:nth-of-type(4):checked ~ .carousel__track {
+    transform: translateY(-300%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__activator:nth-of-type(5):checked ~ .carousel__track {
+    transform: translateY(-400%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide:nth-of-type(1) {
+    transform: translateY(0%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide:nth-of-type(2) {
+    transform: translateY(100%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide:nth-of-type(3) {
+    transform: translateY(200%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide:nth-of-type(4) {
+    transform: translateY(300%);
+  }
+}
+@media (min-width: 785px) {
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide:nth-of-type(5) {
+    transform: translateY(400%);
+  }
+}
 .main-container .main-content .portfolio__example .carousel-container .carousel__slide img {
   height: 100%;
   width: 100%;
@@ -156,9 +211,6 @@ body {
 .main-container footer form input,
 .main-container footer form textarea,
 .main-container footer form button {
-  font-family: Georgia;
-  font-size: 16px;
-  line-height: 24px;
   width: calc(100% - 22px);
   border-radius: 4px;
   padding: 11px;
@@ -204,7 +256,7 @@ body {
     padding-top: calc(100% + 30px);
   }
 }
-@media (min-width: 785px) and (max-width: 1024px) {
+@media (min-width: 785px) {
   .main-container h1 {
     font-size: 40px;
   }
@@ -253,5 +305,121 @@ body {
     order: 2;
     flex: 2;
     padding-right: 150px;
+  }
+}
+@media (min-width: 785px) and (min-width: 1040px) {
+  .main-container header {
+    position: relative;
+    padding-left: calc(50% - 30px);
+    padding-bottom: 97px;
+    padding-top: 65px;
+  }
+  .main-container header h1 {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 266px;
+  }
+  .main-container header h3 {
+    margin-top: 5px;
+    font-size: 24px;
+    text-align: left;
+  }
+  .main-container header article {
+    margin: 0;
+    text-align: left;
+    width: 89%;
+  }
+  .main-container header img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin-left: 0;
+    border-radius: 0;
+    width: 424px;
+  }
+  .main-container .main-content {
+    padding: 0;
+    width: 944px;
+    margin: auto;
+  }
+  .main-container .main-content .portfolio__example {
+    position: relative;
+    padding-left: 650px;
+  }
+  .main-container .main-content .portfolio__example:nth-of-type(even) {
+    transform: scaleX(-1);
+  }
+  .main-container .main-content .portfolio__example:nth-of-type(even) h2,
+  .main-container .main-content .portfolio__example:nth-of-type(even) article,
+  .main-container .main-content .portfolio__example:nth-of-type(even) img {
+    transform: scaleX(-1);
+  }
+  .main-container .main-content .portfolio__example h2 {
+    display: block;
+    margin-bottom: 180px;
+  }
+  .main-container .main-content .portfolio__example article {
+    font-size: 16px;
+    width: 100%;
+    float: none;
+  }
+  .main-container .main-content .portfolio__example .carousel-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 554px;
+  }
+  .main-container .main-content .portfolio__example .carousel-container:before {
+    padding-top: calc(70.5%);
+  }
+  .main-container .main-content .portfolio__example .carousel-container .carousel__control {
+    height: 50%;
+    width: calc(100% - 27px);
+  }
+  .main-container .main-content .portfolio__example .carousel-container .carousel__control--forward {
+    bottom: 0;
+  }
+  .main-container .main-content .portfolio__example .carousel-container .carousel__control--backward {
+    top: 0;
+  }
+  .main-container .main-content .portfolio__example .carousel-container .carousel__slide {
+    height: 100%;
+    width: calc(100% - 27px);
+  }
+  .main-container .main-content .portfolio__example .carousel-container .carousel__indicators {
+    height: 100px;
+    width: 10px;
+    right: 1px;
+    top: calc(50% - 50px);
+  }
+  .main-container footer {
+    padding-bottom: 225px;
+  }
+  .main-container footer .footer-container {
+    position: relative;
+    width: 944px;
+    margin: auto;
+  }
+  .main-container footer h1 {
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
+  .main-container footer ul {
+    padding-left: 25px;
+    width: 100%;
+    display: block;
+  }
+  .main-container footer article {
+    flex: none;
+    width: 27%;
+    padding-right: 73%;
+    display: block;
+    margin-bottom: 40px;
+  }
+  .main-container footer form {
+    position: absolute;
+    width: 50%;
+    right: 40px;
+    top: 130px;
   }
 }

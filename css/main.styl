@@ -26,6 +26,9 @@ body
 
 	a
 	article
+	button
+	input
+	textarea
 		font-family Georgia
 		font-size 16px
 		line-height 24px
@@ -35,6 +38,8 @@ body
 		text-decoration none
 				
 	header
+		display flex
+		flex-direction column
 		padding 30px 16px
 		background-color #082841
 
@@ -65,6 +70,7 @@ body
 
 			.carousel-container
 				display none
+
 				.carousel__slide
 					height calc(100% - 78px)
 					width calc(100% - 48px)
@@ -107,7 +113,17 @@ body
 			&__example
 				.carousel-container
 					.carousel
-						&__slide 
+						for num in 1..5
+							@media (min-width: 785px)
+								&__activator:nth-of-type({num})
+									&:checked ~ .carousel__track
+										transform translateY(-((num - 1) * 100%))
+					.carousel
+						&__slide
+							for num in (1..5)
+								@media (min-width: 785px)
+									&:nth-of-type({num})
+										transform translateY((num - 1) * 100%)
 							img
 								height 100%
 								width 100%
@@ -150,9 +166,6 @@ body
 			input
 			textarea
 			button
-				font-family Georgia
-				font-size 16px
-				line-height 24px
 				width calc(100% - 22px)
 				border-radius 4px
 				padding 11px
@@ -206,9 +219,8 @@ body
 	}
 }
 
-@media (min-width: 785px) and (max-width: 1024px) {
+@media (min-width: 785px) {
 	.main-container{
-
 		h1 {
 			font-size 40px
 		}
@@ -271,5 +283,130 @@ body
 			}
 		}
 	}
-}
 
+	@media (min-width: 1040px) {
+		.main-container {
+			header{
+				position relative
+				padding-left calc(50% - 30px)
+				padding-bottom 97px
+				padding-top 65px
+				h1 {
+					text-align left
+					margin-top 0
+					margin-bottom 266px
+				}
+				h3 {
+					margin-top 5px
+					font-size 24px
+					text-align left
+				}
+				article {
+					margin 0
+					text-align left
+					width 89%
+				}
+				img {
+					position absolute
+					left 0
+					top 0
+					margin-left 0
+					border-radius 0
+					width 424px
+				}
+			}
+		.main-content {
+			padding 0
+			width 944px
+			margin auto
+			
+			.portfolio{
+				&__example{
+					&:nth-of-type(even) {
+						transform: scaleX(-1);
+						h2, article, img {
+							transform: scaleX(-1);
+						}
+					}
+					position relative
+					padding-left 650px
+					h2 {
+						display block
+						margin-bottom 180px
+					}
+					article {
+						font-size 16px
+						width 100%
+						float none
+
+					}
+					.carousel-container {
+						&:before {
+							padding-top: calc(70.5%);	
+						}
+						position absolute
+						left 0
+						top 0
+						width 554px
+						.carousel {
+							&__control {
+								height 50%
+								width calc(100% - 27px) 
+								&--forward{
+									bottom 0
+								}
+								&--backward{
+									top 0	
+								}
+							}
+							&__slide {
+								height 100%
+								width calc(100% - 27px)
+							}
+							&__indicators {
+								height 100px
+								width 10px
+								right 1px
+								top calc(50% - 50px)
+							}
+						}
+					}
+				}
+			}
+		}
+
+		footer {
+			.footer-container {
+				position relative
+				width 944px
+				margin auto
+			}
+			padding-bottom 225px
+			h1 {
+				margin-top 50px				
+				margin-bottom 60px
+			}
+			ul {
+				padding-left 25px
+				width 100%
+				display block
+			}
+
+			article {
+				flex none
+				width 27%
+				padding-right 73%
+				display block
+				margin-bottom 40px
+			}
+
+			form {
+				position absolute
+				width 50%
+				right 40px
+				top 130px
+			}
+		}
+		}
+	}
+}
