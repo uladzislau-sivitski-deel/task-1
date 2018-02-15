@@ -9,9 +9,6 @@ body {
   grid-template-rows: auto auto auto;
   grid-template-columns: 100%;
   grid-template-areas: "main-container__header" "main-container__content" "main-container__footer";
-  grid-auto-flow: initial;
-  grid-auto-rows: initial;
-  grid-auto-columns: initial;
 }
 .main-container h1,
 .main-container h2,
@@ -48,36 +45,34 @@ body {
 .main-container__content,
 .main-container__footer {
   padding: 30px 16px;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 304px 1fr;
+  grid-template-areas: ". content .";
 }
 .main-container__header {
   grid-area: main-container__header;
   background-color: #082841;
 }
-.main-container__header h1,
-.main-container__header h3 {
+.main-container__header .header-container {
+  grid-area: content;
+}
+.main-container__header .header-container h1,
+.main-container__header .header-container h3,
+.main-container__header .header-container article {
   color: #fff;
 }
-.main-container__header img {
+.main-container__header .header-container img {
   display: block;
   margin: 0 auto 30px auto;
   width: 50%;
   border-radius: 100%;
 }
-.main-container__header article {
-  color: #fff;
+.main-container__header .header-container article {
   text-align: center;
 }
 .main-container__content {
   grid-area: main-container__content;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: 1fr 304px 1fr;
-  grid-template-areas: ". content .";
-  grid-auto-flow: initial;
-  grid-auto-rows: initial;
-  grid-auto-columns: initial;
 }
 .main-container__content .content-container {
   display: flex;
@@ -94,10 +89,10 @@ body {
 }
 .main-container__content .expectations .carousel-container {
   display: none;
+  height: 334px;
 }
 .main-container__content .expectations .carousel-container .carousel__slide {
-  height: calc(100% - 30);
-  width: 100%;
+  height: calc(100% - 30px);
   background-image: linear-gradient(-180deg, #e6f0f0 0%, #e9f0e6 100%);
   padding: 24px;
 }
@@ -114,7 +109,7 @@ body {
   justify-content: space-between;
   width: calc(60% - 20px);
   height: 240px;
-  margin: 10px;
+  margin: 0 20px 20px 0;
   padding: 32px;
   background-image: linear-gradient(-180deg, #e6f0f0 0%, #e9f0e6 100%);
 }
@@ -129,7 +124,6 @@ body {
   text-align: left;
 }
 .main-container__content .portfolio h1 {
-  width: 100%;
   margin-bottom: 38px;
 }
 .main-container__content .portfolio h2 {
@@ -142,6 +136,9 @@ body {
 }
 .main-container__content .portfolio__example {
   margin-bottom: 80px;
+}
+.main-container__content .portfolio__example .carousel-container {
+  margin-top: 15px;
 }
 @media (min-width: 1080px) {
   .main-container__content .portfolio__example .carousel-container .carousel__activator:nth-of-type(1):checked ~ .carousel__track {
@@ -167,6 +164,9 @@ body {
   .main-container__content .portfolio__example .carousel-container .carousel__activator:nth-of-type(5):checked ~ .carousel__track {
     transform: translateY(-400%);
   }
+}
+.main-container__content .portfolio__example .carousel-container .carousel__slide {
+  box-shadow: 0 0 40px rgba(0,0,0,0.5);
 }
 @media (min-width: 1080px) {
   .main-container__content .portfolio__example .carousel-container .carousel__slide:nth-of-type(1) {
@@ -201,20 +201,22 @@ body {
   grid-area: main-container__footer;
   background-image: linear-gradient(-180deg, #e6f0f0 0%, #e9f0e6 100%);
 }
-.main-container__footer h1 {
+.main-container__footer .footer-container {
+  grid-area: content;
+}
+.main-container__footer .footer-container h1 {
   text-align: left;
 }
-.main-container__footer ul {
+.main-container__footer .footer-container ul {
   padding-left: 25px;
 }
-.main-container__footer ul li {
+.main-container__footer .footer-container ul li {
   list-style-type: none;
   position: relative;
   margin: 10px;
 }
-.main-container__footer ul li:before {
+.main-container__footer .footer-container ul li:before {
   content: '';
-  display: inline-block;
   position: absolute;
   left: -35px;
   height: 20px;
@@ -223,9 +225,9 @@ body {
   background: #000;
   border-radius: 2px;
 }
-.main-container__footer form input,
-.main-container__footer form textarea,
-.main-container__footer form button {
+.main-container__footer .footer-container form input,
+.main-container__footer .footer-container form textarea,
+.main-container__footer .footer-container form button {
   width: 100%;
   border-radius: 4px;
   padding: 11px;
@@ -233,36 +235,38 @@ body {
   margin: 10px 0px;
   outline: none;
 }
-.main-container__footer form textarea {
+.main-container__footer .footer-container form textarea {
   resize: none;
 }
-.main-container__footer form button,
-.main-container__footer form .file-container {
+.main-container__footer .footer-container form button,
+.main-container__footer .footer-container form .file-container {
   font-family: Helvetica;
   font-weight: bold;
 }
-.main-container__footer form button {
+.main-container__footer .footer-container form button {
   background-color: #dd3e18;
   color: #fff;
-  width: 100%;
 }
-.main-container__footer form .file-container {
+.main-container__footer .footer-container form .file-container {
   display: inline-block;
   line-height: 24px;
   cursor: pointer;
   color: #dd3e18;
   margin-bottom: 30px;
 }
-.main-container__footer form .file-container span {
+.main-container__footer .footer-container form .file-container span {
   margin-right: 10px;
   font-size: 21px;
 }
-.main-container__footer form .file-container [type=file] {
+.main-container__footer .footer-container form .file-container [type=file] {
   display: none;
 }
 @media only screen and (max-width: 768px) {
   .main-container__content .expectations .cards-conteiner {
     display: none;
+  }
+  .main-container__content .expectations .carousel-container {
+    display: inline-block;
   }
   .main-container__content .portfolio .carousel-container {
     height: 246px;
@@ -275,9 +279,10 @@ body {
   .main-container h2 {
     font-size: 24px;
   }
+  .main-container__header,
   .main-container__content,
   .main-container__footer {
-    padding: 30px 32px;
+    grid-template-columns: 1fr 704px 1fr;
   }
   .main-container__header img {
     margin-bottom: 75px;
@@ -288,17 +293,11 @@ body {
     line-height: 28px;
     font-size: 20px;
   }
-  .main-container__content {
-    grid-template-columns: 1fr 704px 1fr;
-  }
   .main-container__content .content-container .expectations h1 {
     text-align: left;
   }
   .main-container__content .content-container .expectations .carousel-container {
     display: none;
-  }
-  .main-container__content .content-container .portfolio {
-    grid-template-columns: 1fr 704px 1fr;
   }
   .main-container__content .content-container .portfolio__example {
     display: grid;
@@ -314,27 +313,19 @@ body {
     grid-area: link;
   }
   .main-container__content .content-container .portfolio__example .carousel-container {
+    height: 526px;
     grid-area: carousel;
   }
-  .main-container__content .content-container .portfolio__example article {
+  .main-container__content .content-container .portfolio__example__description {
     grid-area: article;
     margin-bottom: 25px;
-  }
-  .main-container__content .content-container .portfolio__example .carousel-container:before {
-    padding-top: calc(70.5% + 30px);
-  }
-  .main-container__footer {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: 1fr 704px 1fr;
-    grid-template-areas: ". content .";
   }
   .main-container__footer .footer-container {
     grid-area: content;
     display: grid;
-    grid-template-rows: 50px 147px 1fr;
+    grid-template-rows: 50px 61px 147px 1fr;
     grid-template-columns: 384px 1fr;
-    grid-template-areas: "title title" "article list" "form form";
+    grid-template-areas: "title title" ". ." "article list" "form form";
   }
   .main-container__footer h1 {
     margin: 0;
@@ -360,6 +351,11 @@ body {
     font-size: 24px;
   }
   .main-container__header {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+    padding: 0;
+  }
+  .main-container__header .header-container {
     height: 768px;
     padding: 0;
     display: grid;
@@ -367,21 +363,21 @@ body {
     grid-template-columns: 424px 95px 464px 1fr;
     grid-template-areas: "photo . ." "photo . title" "photo . header" "photo . ." "photo . article" "photo . .";
   }
-  .main-container__header h1 {
+  .main-container__header .header-container h1 {
     grid-area: header;
     margin: 11px 0 0 0;
   }
-  .main-container__header h3 {
+  .main-container__header .header-container h3 {
     grid-area: title;
     margin: 0;
     text-align: left;
   }
-  .main-container__header article {
+  .main-container__header .header-container article {
     grid-area: article;
     width: 100%;
     text-align: left;
   }
-  .main-container__header img {
+  .main-container__header .header-container img {
     grid-area: photo;
     width: 100%;
     margin: 0;
@@ -393,19 +389,19 @@ body {
   .main-container__content .content-container .portfolio__example {
     height: 384px;
     grid-template-columns: 571px 70px 1fr;
-    grid-template-rows: 44px 1fr 147px;
+    grid-template-rows: 70px 1fr 1fr;
     grid-template-areas: "carousel . title" "carousel . link" "carousel . ." "carousel . article";
-  }
-  .main-container__content .content-container .portfolio__example:nth-of-type(even) {
-    grid-template-columns: 1fr 70px 571px;
-    grid-template-rows: 44px 1fr 147px;
-    grid-template-areas: "title . carousel" "link . carousel" ". . carousel" "article . carousel";
   }
   .main-container__content .content-container .portfolio__example h2 {
     grid-area: title;
   }
-  .main-container__content .content-container .portfolio__example .carousel-container:before {
-    padding-top: calc(70.5%);
+  .main-container__content .content-container .portfolio__example__description {
+    margin: 0 0 0 0;
+  }
+  .main-container__content .content-container .portfolio__example .carousel-container {
+    height: 100%;
+    margin: 0 0 0 0;
+    box-shadow: -15px 50px 40px -40px rgba(0,0,0,0.5);
   }
   .main-container__content .content-container .portfolio__example .carousel-container .carousel__control {
     height: 50%;
@@ -419,6 +415,7 @@ body {
     top: 0;
   }
   .main-container__content .content-container .portfolio__example .carousel-container .carousel__slide {
+    box-shadow: none;
     height: 100%;
     width: calc(100% - 27px);
   }
@@ -428,24 +425,32 @@ body {
     right: 1px;
     top: calc(50% - 50px);
   }
-  __footer {
-    padding-bottom: 225px;
+  .main-container__content .content-container .portfolio__example:nth-of-type(even) {
+    grid-template-columns: 1fr 70px 571px;
+    grid-template-rows: 44px 1fr 147px;
+    grid-template-areas: "title . carousel" "link . carousel" ". . carousel" "article . carousel";
   }
-  __footer .footer-container {
-    position: relative;
-    width: 944px;
-    margin: auto;
+  .main-container__content .content-container .portfolio__example:nth-of-type(even) .carousel-container {
+    box-shadow: 35px 50px 40px -40px rgba(0,0,0,0.5);
   }
-  __footer h1 {
-    margin-top: 50px;
-    margin-bottom: 60px;
+  .main-container__content .content-container .portfolio__example:nth-of-type(even) .carousel-container .carousel__indicators {
+    left: 0;
   }
-  __footer ul {
-    padding-left: 25px;
-    width: 100%;
-    display: block;
+  .main-container__content .content-container .portfolio__example:nth-of-type(even) .carousel-container .carousel__slide {
+    margin-left: 27px;
   }
-  __footer ul:before {
+  .main-container__footer {
+    grid-template-columns: 1fr 904px 1fr;
+  }
+  .main-container__footer .footer-container {
+    grid-template-rows: 50px 61px 147px 1fr;
+    grid-template-columns: 304px 96px 1fr;
+    grid-template-areas: "title title title" ". . ." "article . form" "list . form";
+  }
+  .main-container__footer .footer-container ul {
+    margin: 0;
+  }
+  .main-container__footer .footer-container ul:before {
     content: 'Ссылки на мои соцсети:';
     position: relative;
     left: -25px;
@@ -453,17 +458,14 @@ body {
     font-size: 16px;
     line-height: 24px;
   }
-  __footer article {
-    flex: none;
-    width: 27%;
-    padding-right: 73%;
-    display: block;
-    margin-bottom: 40px;
+  .main-container__footer .footer-container form {
+    margin-top: -10px;
   }
-  __footer form {
-    position: absolute;
-    width: 50%;
-    right: 40px;
-    top: 130px;
+}
+@media only screen and (min-width: 768px) and (min-width: 1440px) {
+  .main-container__header .header-container {
+    height: 672px;
+    grid-template-columns: 552px 95px 464px 1fr;
+    grid-template-rows: 65px 30px 50px 234px 97px;
   }
 }

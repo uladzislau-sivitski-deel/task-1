@@ -10,16 +10,13 @@ $carouselControlSize   = 30px
   to
     opacity 1
 
-/**
-  * Control & indicator mixin
-*/
 .carousel
   width      $carouselWidth
   overflow   hidden
   text-align center
   padding    0
   list-style none
-  position:  absolute
+  position  absolute
   top 0
   left 0
   bottom 0
@@ -29,10 +26,6 @@ $carouselControlSize   = 30px
   &__activator
     display none
 
-  /**
-  * slide logic
-  */
-  
   for num in 1..$noOfSlides
       &__activator:nth-of-type({num})
         &:checked ~ .carousel__track
@@ -49,69 +42,59 @@ $carouselControlSize   = 30px
           background-color     black
         
    &__control
-    height       calc(100% - 30px)
-    width        50%
-    position     absolute
-    cursor       pointer
-    z-index      3
+    height  calc(100% - 30px)
+    width 50%
+    position  absolute
+    cursor  pointer
+    z-index 3
 
     &--backward
-      left      0px
+      left  0px
 
     &--forward
-      right     0px
+      right 0px
 
-  /**
-    * Element for holding slide indicators
-  */
   &__indicators
-    position   absolute
-    bottom     0px
-    width      100%
+    position  absolute
+    bottom  0px
+    width 100%
     text-align center
 
-  /**
-    * Indicator for indicating active slide
-  */
   &__indicator
-    height        $carouselIndicatorSize
-    width         $carouselIndicatorSize
+    height  $carouselIndicatorSize
+    width $carouselIndicatorSize
     border-radius 100%
-    display       inline-block
-    z-index       2
-    cursor        pointer
-    margin        0 20px 0 2.5px
+    display  inline-block
+    z-index 2
+    cursor  pointer
+    margin  0 20px 0 2.5px
     &:hover
-      opacity     .75
-      background-color     black
+      opacity .75
+      background-color  black
 
   /**
     * Create rules for when slides are contained within a track
   */
   &__track
     position absolute
-    top      0
-    right    0
-    bottom   0
-    left     0
-    padding  0
-    margin   0
+    top 0
+    right 0
+    bottom 0
+    left  0
+    padding 0
+    margin  0
     transition transform $slideTransition ease 0s
 
     .carousel__slide
-      display block
-      top     0
-      left    0
-      right   0
       for num in (1..$noOfSlides)
         &:nth-of-type({num})
           transform translateX((num - 1) * 100%)
         
 
   &__slide
-    height     calc(100% - 30px)
-    width:      calc(100%)
-    position   absolute
+    height  calc(100% - 30px)
+    width 100%
+    position  absolute
     overflow-y auto
 
 /**
@@ -122,12 +105,6 @@ $carouselControlSize   = 30px
   display  inline-block
   position relative
   width 100%
-
-.carousel-container:before{
-	content: "";
-	display: block;
-	padding-top: 100%; 	/* initial ratio of 1:1*/
-}
 
 .carousel__slide
   overflow      hidden

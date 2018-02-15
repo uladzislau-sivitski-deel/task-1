@@ -1,5 +1,9 @@
 $cyan = linear-gradient(-180deg, #E6F0F0 0%, #E9F0E6 100%);
 $orange = #DD3E18
+
+$grid-size-small = 1fr 304px 1fr
+$grid-size-medium = 1fr 704px 1fr
+$grid-size-large = 1fr 904px 1fr
 *
 	box-sizing border-box
 body
@@ -10,16 +14,12 @@ body
 	grid-template-rows auto auto auto
 	grid-template-columns 100%
 	grid-template-areas "main-container__header" "main-container__content" "main-container__footer"
-	grid-auto-flow initial
-	grid-auto-rows initial
-	grid-auto-columns initial
 		
 	h1
 	h2
 	h3
 		font-family Helvetica
 		text-align center
-
 	h1
 		font-size 32px
 		line-height 40px
@@ -29,7 +29,6 @@ body
 	h3
 		font-size 16px
 		line-height 19px
-
 	a
 	article
 	button
@@ -38,7 +37,6 @@ body
 		font-family Georgia
 		font-size 16px
 		line-height 24px
-
 	a
 		color $orange
 		text-decoration none
@@ -47,59 +45,47 @@ body
 	&__content
 	&__footer		
 		padding 30px 16px
-		display flex
-		flex-direction column
-		
+		display grid
+		grid-template-rows auto
+		grid-template-columns $grid-size-small
+		grid-template-areas ". content ."
+
 	&__header
 		grid-area main-container__header
 		background-color #082841
-
-		h1
-		h3
-			color #FFFFFF
-
-		img
-			display block
-			margin 0 auto 30px auto
-			width 50%
-			border-radius 100%
-
-		article
-			color #FFFFFF
-			text-align center
+		.header-container
+			grid-area: content
+			h1
+			h3
+			article		
+				color #FFFFFF
+			img
+				display block
+				margin 0 auto 30px auto
+				width 50%
+				border-radius 100%
+			article
+				text-align center
 
 	&__content
 		grid-area main-container__content
-		display grid
-		grid-template-rows auto
-		grid-template-columns 1fr 304px 1fr
-		grid-template-areas ". content ."
-		grid-auto-flow initial
-		grid-auto-rows initial
-		grid-auto-columns initial
-
 		.content-container
 			display flex
 			flex-flow column
 			grid-area content
-
 		.expectations
 			margin-bottom 80px
-
 			h2
 				text-align left
 				margin-top 0
 				margin-bottom 29
-
 			.carousel-container
 				display none
-
+				height 334px
 				.carousel__slide
-					height calc(100% - 30)
-					width 100%
+					height calc(100% - 30px)
 					background-image $cyan
 					padding 24px
-
 					article
 						text-align left
 
@@ -112,7 +98,7 @@ body
 					justify-content space-between
 					width calc(60% - 20px)
 					height: 240px
-					margin 10px
+					margin 0 20px 20px 0
 					padding  32px
 					background-image $cyan
 				&__card:nth-of-type(even)
@@ -125,7 +111,6 @@ body
 			h2
 				text-align left
 			h1
-				width 100%
 				margin-bottom 38px
 			h2
 				margin-top 0
@@ -136,6 +121,7 @@ body
 			&__example
 				margin-bottom 80px
 				.carousel-container
+					margin-top 15px
 					.carousel
 						for num in 1..5
 							@media (min-width: 1080px)
@@ -144,6 +130,7 @@ body
 										transform translateY(-((num - 1) * 100%))
 					.carousel
 						&__slide
+							box-shadow 0 0 40px rgba(0,0,0,0.5);
 							for num in (1..5)
 								@media (min-width: 1080px)
 									&:nth-of-type({num})
@@ -155,62 +142,56 @@ body
 	&__footer
 		grid-area main-container__footer
 		background-image $cyan
-		h1
-			text-align left
-		ul
-			padding-left 25px
-			li
-				list-style-type none
-				position relative
-				margin 10px
-				&:before 
-					content ''
-					display inline-block
-					position absolute
-					left -35px
-					height 20px
-					width 20px
-					opacity 0.1
-					background #000000
-					border-radius 2px
-			
-		form
-			input
-			textarea
-			button
-				width 100%
-				border-radius 4px
-				padding 11px
-				border 1px solid rgba(0, 0, 0, .1)
-				margin 10px 0px
-				outline none
-
-			textarea
-				resize none
+		.footer-container
+			grid-area content
+			h1
+				text-align left
+			ul
+				padding-left 25px
+				li
+					list-style-type none
+					position relative
+					margin 10px
+					&:before 
+						content ''
+						position absolute
+						left -35px
+						height 20px
+						width 20px
+						opacity 0.1
+						background #000000
+						border-radius 2px
 				
-			button
-			.file-container
-				font-family Helvetica
-				font-weight bold
-
-			button
-				background-color $orange
-				color white
-				width 100%
-
-			.file-container
-				display inline-block
-				line-height 24px
-				cursor pointer
-				color $orange
-				margin-bottom 30px
-
-				span
-					margin-right 10px
-					font-size 21px
-
-				[type=file]
-					display none
+			form
+				input
+				textarea
+				button
+					width 100%
+					border-radius 4px
+					padding 11px
+					border 1px solid rgba(0, 0, 0, .1)
+					margin 10px 0px
+					outline none
+				textarea
+					resize none
+				button
+				.file-container
+					font-family Helvetica
+					font-weight bold
+				button
+					background-color $orange
+					color white
+				.file-container
+					display inline-block
+					line-height 24px
+					cursor pointer
+					color $orange
+					margin-bottom 30px
+					span
+						margin-right 10px
+						font-size 21px
+					[type=file]
+						display none
 			
 @media only screen and (max-width: 768px)
 	.main-container
@@ -218,6 +199,8 @@ body
 			.expectations
 				.cards-conteiner
 					display none
+				.carousel-container
+					display inline-block
 			.portfolio
 				.carousel-container
 					height 246px
@@ -226,18 +209,17 @@ body
 	.main-container
 		h1
 			font-size 40px
-		
 		h2
 			font-size 24px
 		 
+		&__header
 		&__content
 		&__footer
-			padding 30px 32px
+			grid-template-columns $grid-size-medium
 		
 		&__header
 			img
 				margin-bottom 75px
-			
 			article
 				width 75%
 				margin auto
@@ -245,7 +227,6 @@ body
 				font-size 20px
 
 		&__content
-			grid-template-columns 1fr 704px 1fr
 			.content-container
 				.expectations
 					h1
@@ -253,40 +234,30 @@ body
 					.carousel-container
 						display none
 				.portfolio
-					grid-template-columns 1fr 704px 1fr
 					&__example
 						display grid
 						grid-template-rows 37px 1fr 528px
 						grid-template-columns 1fr 384px
 						grid-template-areas "title article" "link article" "carousel carousel"
 						margin-bottom 70px
-
 						h1
 							grid-area title
 						a
 							grid-area link
 						.carousel-container
+							height 526px
 							grid-area carousel
-						article
+						&__description
 							grid-area article
 							margin-bottom 25px
-							
-						.carousel-container:before
-							padding-top calc(70.5% + 30px)
 
 		&__footer
-			display grid
-			grid-template-rows auto
-			grid-template-columns 1fr 704px 1fr
-			grid-template-areas ". content ."
-
 			.footer-container
 				grid-area content
 				display grid
-				grid-template-rows 50px 147px 1fr
+				grid-template-rows 50px 61px 147px 1fr
 				grid-template-columns 384px 1fr 
-				grid-template-areas "title title" "article list" "form form"
-
+				grid-template-areas "title title" ". ." "article list" "form form"
 			h1
 				margin 0
 				grid-area title
@@ -306,48 +277,50 @@ body
 			h3
 				font-size 24px
 			&__header
-				height 768px
+				grid-template-columns 1fr
+				grid-template-areas "content"
 				padding 0
-				display grid
-				grid-template-rows 65px 30px 50px 266px 97px
-				grid-template-columns 424px 95px 464px 1fr
-				grid-template-areas "photo . ." "photo . title" "photo . header" "photo . ." "photo . article" "photo . ."
-
-				h1
-					grid-area header
-					margin 11px 0 0 0
-				h3
-					grid-area title
-					margin 0
-					text-align left
-				article
-					grid-area article
-					width 100%
-					text-align left
-				img
-					grid-area photo
-					width 100%
-					margin 0
-					border-radius 0
-
+				.header-container
+					height 768px
+					padding 0
+					display grid
+					grid-template-rows 65px 30px 50px 266px 97px
+					grid-template-columns 424px 95px 464px 1fr
+					grid-template-areas "photo . ." "photo . title" "photo . header" "photo . ." "photo . article" "photo . ."
+					h1
+						grid-area header
+						margin 11px 0 0 0
+					h3
+						grid-area title
+						margin 0
+						text-align left
+					article
+						grid-area article
+						width 100%
+						text-align left
+					img
+						grid-area photo
+						width 100%
+						margin 0
+						border-radius 0
 			&__content
-				grid-template-columns 1fr 904px 1fr
+				grid-template-columns $grid-size-large
 				.content-container
 					.portfolio
 						&__example
 							height 384px
 							grid-template-columns 571px 70px 1fr
-							grid-template-rows 44px 1fr 147px
+							grid-template-rows 70px 1fr 1fr
 							grid-template-areas "carousel . title" "carousel . link" "carousel . ." "carousel . article"
-							&:nth-of-type(even)
-								grid-template-columns	1fr 70px 571px
-								grid-template-rows 44px 1fr 147px
-								grid-template-areas "title . carousel" "link . carousel" ". . carousel" "article . carousel"
+
 							h2
 								grid-area title
+							&__description
+								margin 0 0 0 0
 							.carousel-container
-								&:before
-									padding-top: calc(70.5%);	
+								height 100%
+								margin 0 0 0 0
+								box-shadow -15px 50px 40px -40px rgba(0,0,0,0.5)
 								.carousel
 									&__control
 										height 50%
@@ -358,6 +331,7 @@ body
 										&--backward
 											top 0	
 									&__slide
+										box-shadow none
 										height 100%
 										width calc(100% - 27px)
 									&__indicators
@@ -366,39 +340,39 @@ body
 										right 1px
 										top calc(50% - 50px)
 
-		&__footer
-			.footer-container
-				position relative
-				width 944px
-				margin auto
-			
-			padding-bottom 225px
-			h1
-				margin-top 50px				
-				margin-bottom 60px
-			
-			ul
-				padding-left 25px
-				width 100%
-				display block
-				&:before
-					content 'Ссылки на мои соцсети:'
-					position relative
-					left -25px
-					font-family Georgia
-					font-size 16px
-					line-height 24px
+							&:nth-of-type(even)
+								grid-template-columns	1fr 70px 571px
+								grid-template-rows 44px 1fr 147px
+								grid-template-areas "title . carousel" "link . carousel" ". . carousel" "article . carousel"
+								.carousel-container
+									box-shadow: 35px 50px 40px -40px rgba(0,0,0,0.5);
+									.carousel
+										&__indicators
+											left 0
+										&__slide
+											margin-left: 27px
 
-			article
-				flex none
-				width 27%
-				padding-right 73%
-				display block
-				margin-bottom 40px
-			
-
-			form
-				position absolute
-				width 50%
-				right 40px
-				top 130px
+			&__footer
+				grid-template-columns 1fr 904px 1fr
+				.footer-container
+					grid-template-rows 50px 61px 147px 1fr
+					grid-template-columns 304px 96px 1fr 
+					grid-template-areas "title title title" ". . ." "article . form" "list . form"
+					ul
+						margin 0
+						&:before
+							content 'Ссылки на мои соцсети:'
+							position relative
+							left -25px
+							font-family Georgia
+							font-size 16px
+							line-height 24px
+					form
+						margin-top -10px
+	@media only screen and (min-width: 1440px)
+		.main-container
+			&__header
+				.header-container
+					height 672px
+					grid-template-columns 552px 95px 464px 1fr
+					grid-template-rows 65px 30px 50px 234px 97px
