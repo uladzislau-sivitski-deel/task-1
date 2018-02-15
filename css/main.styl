@@ -1,13 +1,19 @@
-$cyan = #E6F0F0
+$cyan = linear-gradient(-180deg, #E6F0F0 0%, #E9F0E6 100%);
 $orange = #DD3E18
-
+*
+	box-sizing border-box
 body
 	margin 0
 
 .main-container
-	display flex
-	flex-direction column
-
+	display grid
+	grid-template-rows auto auto auto
+	grid-template-columns 100%
+	grid-template-areas "main-container__header" "main-container__content" "main-container__footer"
+	grid-auto-flow initial
+	grid-auto-rows initial
+	grid-auto-columns initial
+		
 	h1
 	h2
 	h3
@@ -36,21 +42,25 @@ body
 	a
 		color $orange
 		text-decoration none
-				
-	header
+
+	&__header
+	&__content
+	&__footer		
+		padding 30px 16px
 		display flex
 		flex-direction column
-		padding 30px 16px
+		
+	&__header
+		grid-area main-container__header
 		background-color #082841
 
 		h1
-		h2
 		h3
 			color #FFFFFF
 
 		img
-			margin-left 25%
-			margin-bottom 30px
+			display block
+			margin 0 auto 30px auto
 			width 50%
 			border-radius 100%
 
@@ -58,8 +68,21 @@ body
 			color #FFFFFF
 			text-align center
 
-	.main-content
-		padding 30px 16px
+	&__content
+		grid-area main-container__content
+		display grid
+		grid-template-rows auto
+		grid-template-columns 1fr 304px 1fr
+		grid-template-areas ". content ."
+		grid-auto-flow initial
+		grid-auto-rows initial
+		grid-auto-columns initial
+
+		.content-container
+			display flex
+			flex-flow column
+			grid-area content
+
 		.expectations
 			margin-bottom 80px
 
@@ -72,31 +95,32 @@ body
 				display none
 
 				.carousel__slide
-					height calc(100% - 78px)
-					width calc(100% - 48px)
-					background-color $cyan
+					height calc(100% - 30)
+					width 100%
+					background-image $cyan
 					padding 24px
+
+					article
+						text-align left
 
 			.cards-conteiner
 				display flex
 				flex-wrap wrap
 				&__card
-					width calc(60% - 84px)
+					display flex
+					flex-direction column
+					justify-content space-between
+					width calc(60% - 20px)
+					height: 240px
 					margin 10px
 					padding  32px
-					background-color $cyan
+					background-image $cyan
 				&__card:nth-of-type(even)
-					width calc(40% - 84px)
+					width calc(40% - 20px)
 				&__card:nth-of-type(3)
 					order 1
-
-				article
-					text-align left
 		
 		.portfolio
-			display flex
-			flex-wrap wrap
-
 			h1
 			h2
 				text-align left
@@ -104,46 +128,37 @@ body
 				width 100%
 				margin-bottom 38px
 			h2
+				margin-top 0
 				a
 					margin-top 8px
 					display block
 					font-weight normal
-			article
-				margin-top 16px
 			&__example
+				margin-bottom 80px
 				.carousel-container
 					.carousel
 						for num in 1..5
-							@media (min-width: 1040px)
+							@media (min-width: 1080px)
 								&__activator:nth-of-type({num})
 									&:checked ~ .carousel__track
 										transform translateY(-((num - 1) * 100%))
 					.carousel
 						&__slide
 							for num in (1..5)
-								@media (min-width: 1040px)
+								@media (min-width: 1080px)
 									&:nth-of-type({num})
 										transform translateY((num - 1) * 100%)
 							img
 								height 100%
 								width 100%
 
-	footer
-		background-color $cyan
-		padding 30px 16px
-
-		.footer-container 
-			display flex
-			flex-wrap wrap
-
+	&__footer
+		grid-area main-container__footer
+		background-image $cyan
 		h1
-			width 100%
-			order 1
 			text-align left
-
 		ul
-			margin-top 0
-			order 2		
+			padding-left 25px
 			li
 				list-style-type none
 				position relative
@@ -158,17 +173,12 @@ body
 					opacity 0.1
 					background #000000
 					border-radius 2px
-
-		article
-			order 3
 			
 		form
-			order 4
-			padding-bottom 20px
 			input
 			textarea
 			button
-				width calc(100% - 22px)
+				width 100%
 				border-radius 4px
 				padding 11px
 				border 1px solid rgba(0, 0, 0, .1)
@@ -176,9 +186,8 @@ body
 				outline none
 
 			textarea
-				resize: none
+				resize none
 				
-
 			button
 			.file-container
 				font-family Helvetica
@@ -203,222 +212,193 @@ body
 				[type=file]
 					display none
 			
-@media (max-width: 784px) {
-	.main-container{
-		.main-content {
-			.expectations{
-				.cards-conteiner {
+@media only screen and (max-width: 768px)
+	.main-container
+		&__content
+			.expectations
+				.cards-conteiner
 					display none
-				}
-				.carousel-container {
-					display inline-block
-				}
-				.carousel-container:before { // 16:9
-					padding-top: calc(100% + 30px);
-				}
-			}
-		}
-	}
-}
-
-@media (min-width: 785px) {
-	.main-container{
-		h1 {
+			.portfolio
+				.carousel-container
+					height 246px
+					
+@media only screen and (min-width: 768px)
+	.main-container
+		h1
 			font-size 40px
-		}
-		h2 {
+		
+		h2
 			font-size 24px
-		}
-		article {
-			line-height 28px
-			font-size 20px
-		} 
-		.main-content, footer {
+		 
+		&__content
+		&__footer
 			padding 30px 32px
-		}
-	  header {
-			img {
+		
+		&__header
+			img
 				margin-bottom 75px
-			}
-			article {
+			
+			article
 				width 75%
 				margin auto
-			}
-		}
-		.main-content {
-			.expectations {
-				h1 {
-					text-align left
-				}
-				.carousel-container {
-					display none
-				}
-			}
-			.portfolio{
-				.carousel-container:before { // 16:9
-					padding-top: calc(70.5% + 30px);
-				}
-			}
-			.portfolio {
-				h2, article {
-					display inline-block
-				}
+				line-height 28px
+				font-size 20px
 
-				article {
-					width 50%
-					float right
-					margin-bottom 20px
-				}
-			}
-		}
+		&__content
+			grid-template-columns 1fr 704px 1fr
+			.content-container
+				.expectations
+					h1
+						text-align left
+					.carousel-container
+						display none
+				.portfolio
+					grid-template-columns 1fr 704px 1fr
+					&__example
+						display grid
+						grid-template-rows 37px 1fr 528px
+						grid-template-columns 1fr 384px
+						grid-template-areas "title article" "link article" "carousel carousel"
+						margin-bottom 70px
 
-		footer {
-			ul {
-				order 3
-				flex 1
-				margin-top -10px;
-			}
-			article {
-				order 2
-				flex 2
-				padding-right 150px
-			}
-		}
-	}
+						h1
+							grid-area title
+						a
+							grid-area link
+						.carousel-container
+							grid-area carousel
+						article
+							grid-area article
+							margin-bottom 25px
+							
+						.carousel-container:before
+							padding-top calc(70.5% + 30px)
 
-	@media (min-width: 1040px) {
-		.main-container {
-			header{
-				position relative
-				padding-left calc(50% - 30px)
-				padding-bottom 97px
-				padding-top 65px
-				h1 {
-					text-align left
-					margin-top 0
-					margin-bottom 266px
-				}
-				h3 {
-					margin-top 5px
-					font-size 24px
-					text-align left
-				}
-				article {
+		&__footer
+			display grid
+			grid-template-rows auto
+			grid-template-columns 1fr 704px 1fr
+			grid-template-areas ". content ."
+
+			.footer-container
+				grid-area content
+				display grid
+				grid-template-rows 50px 147px 1fr
+				grid-template-columns 384px 1fr 
+				grid-template-areas "title title" "article list" "form form"
+
+			h1
+				margin 0
+				grid-area title
+			ul
+				grid-area list	
+				margin 0 0 0 85px				
+			article
+				grid-area article
+			form
+				grid-area form
+
+	@media only screen and (min-width: 1080px)
+		.main-container
+			h1
+				font-size 40px
+				text-align left
+			h3
+				font-size 24px
+			&__header
+				height 768px
+				padding 0
+				display grid
+				grid-template-rows 65px 30px 50px 266px 97px
+				grid-template-columns 424px 95px 464px 1fr
+				grid-template-areas "photo . ." "photo . title" "photo . header" "photo . ." "photo . article" "photo . ."
+
+				h1
+					grid-area header
+					margin 11px 0 0 0
+				h3
+					grid-area title
 					margin 0
 					text-align left
-					width 89%
-				}
-				img {
-					position absolute
-					left 0
-					top 0
-					margin-left 0
+				article
+					grid-area article
+					width 100%
+					text-align left
+				img
+					grid-area photo
+					width 100%
+					margin 0
 					border-radius 0
-					width 424px
-				}
-			}
-		.main-content {
-			padding 0
-			width 944px
-			margin auto
-			
-			.portfolio{
-				&__example{
-					margin-bottom: 130px;
-					&:nth-of-type(even) {
-						transform: scaleX(-1);
-						h2, article, img {
-							transform: scaleX(-1);
-						}
-					}
-					position relative
-					padding-left 650px
-					h2 {
-						display block
-						margin-bottom 130px
-					}
-					article {
-						font-size 16px
-						width 100%
-						float none
 
-					}
-					.carousel-container {
-						&:before {
-							padding-top: calc(70.5%);	
-						}
-						position absolute
-						left 0
-						top 0
-						width 554px
-						.carousel {
-							&__control {
-								height 50%
-								width calc(100% - 27px) 
-								&--forward{
-									bottom 0
-								}
-								&--backward{
-									top 0	
-								}
-							}
-							&__slide {
-								height 100%
-								width calc(100% - 27px)
-							}
-							&__indicators {
-								height 100px
-								width 10px
-								right 1px
-								top calc(50% - 50px)
-							}
-						}
-					}
-				}
-			}
-		}
+			&__content
+				grid-template-columns 1fr 904px 1fr
+				.content-container
+					.portfolio
+						&__example
+							height 384px
+							grid-template-columns 571px 70px 1fr
+							grid-template-rows 44px 1fr 147px
+							grid-template-areas "carousel . title" "carousel . link" "carousel . ." "carousel . article"
+							&:nth-of-type(even)
+								grid-template-columns	1fr 70px 571px
+								grid-template-rows 44px 1fr 147px
+								grid-template-areas "title . carousel" "link . carousel" ". . carousel" "article . carousel"
+							h2
+								grid-area title
+							.carousel-container
+								&:before
+									padding-top: calc(70.5%);	
+								.carousel
+									&__control
+										height 50%
+										width calc(100% - 27px) 
+										left 0
+										&--forward
+											bottom 0
+										&--backward
+											top 0	
+									&__slide
+										height 100%
+										width calc(100% - 27px)
+									&__indicators
+										height 100px
+										width 10px
+										right 1px
+										top calc(50% - 50px)
 
-		footer {
-			.footer-container {
+		&__footer
+			.footer-container
 				position relative
 				width 944px
 				margin auto
-			}
+			
 			padding-bottom 225px
-			h1 {
+			h1
 				margin-top 50px				
 				margin-bottom 60px
-			}
-			ul {
+			
+			ul
 				padding-left 25px
 				width 100%
 				display block
-				&:before {
+				&:before
 					content 'Ссылки на мои соцсети:'
 					position relative
 					left -25px
 					font-family Georgia
 					font-size 16px
 					line-height 24px
-				}
-			}
 
-
-			article {
+			article
 				flex none
 				width 27%
 				padding-right 73%
 				display block
 				margin-bottom 40px
-			}
+			
 
-			form {
+			form
 				position absolute
 				width 50%
 				right 40px
 				top 130px
-			}
-		}
-		}
-	}
-}
